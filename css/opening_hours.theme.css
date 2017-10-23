@@ -39,7 +39,7 @@
 .opening-hours-week .times {
   clear: right;
   display: block;
-  margin-right: 1em;
+  //margin-right: 1em;
   text-align: right;
 }
 
