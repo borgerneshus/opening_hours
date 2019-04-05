@@ -194,18 +194,24 @@
           // Flip the even/odd value every time an instance is added.
           even_odd = flip[even_odd];
         });
-
+        //For removing duplicates
+        var seen = {};
         // Convert all notices to Tipsy tooltips.
         self.el.find('.instance').each(function () {
           var $instance = $(this),
               notices = [];
-
+             
           // Get the text of all notices, both categories and free-form
           // text field.
           $instance.find('.category,.notice').each(function () {
             // Save the note for later.
             notices.push(this.textContent);
-
+            var txt = $(this).text();
+            if (seen[txt])
+                $(this).remove();
+            else
+                seen[txt] = true;
+                $(this).closest('.opening-hours-week').after('</br>* '+txt);
             // Hide the original text.
             $(this).hide();
           });
@@ -221,7 +227,7 @@
               fade: true
             });
           }
-        });
+});
 
         // Fade back in when we're done rendering.
         self.el.fadeIn('fast');
