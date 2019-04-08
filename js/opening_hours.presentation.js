@@ -211,7 +211,7 @@
                 $(this).remove();
             else
                 seen[txt] = true;
-                $(this).closest('.opening-hours-week').after('</br>* '+txt);
+                $(this).closest('.opening-hours-week').once().after('</br>* '+txt);
             // Hide the original text.
             $(this).hide();
           });
